@@ -399,7 +399,7 @@ Blockly.Blocks['text_prompt_ext'] = {
     var dropdown = new Blockly.FieldDropdown(TYPES, function(newOp) {
       thisBlock.updateType_(newOp);
     });
-    this.appendValueInput('TEXT')
+    this.appendDummyInput()
         .appendField(dropdown, 'TYPE');
     this.setOutput(true, 'String');
     this.setTooltip(function() {

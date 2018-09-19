@@ -227,25 +227,10 @@ Blockly.Python['text_print'] = function(block) {
 
 Blockly.Python['text_prompt_ext'] = function(block) {
   // Prompt function.
-  var functionName = Blockly.Python.provideFunction_(
-      'text_prompt',
-      ['def ' + Blockly.Python.FUNCTION_NAME_PLACEHOLDER_ + '(msg):',
-       '  try:',
-       '    return raw_input(msg)',
-       '  except NameError:',
-       '    return input(msg)']);
-  if (block.getField('TEXT')) {
-    // Internal message.
-    var msg = Blockly.Python.quote_(block.getFieldValue('TEXT'));
-  } else {
-    // External message.
-    var msg = Blockly.Python.valueToCode(block, 'TEXT',
-        Blockly.Python.ORDER_NONE) || '\'\'';
-  }
-  var code = functionName + '(' + msg + ')';
+  var code =  'input()';
   var toNumber = block.getFieldValue('TYPE') == 'NUMBER';
   if (toNumber) {
-    code = 'float(' + code + ')';
+    code = 'int(' + code + ')';
   }
   return [code, Blockly.Python.ORDER_FUNCTION_CALL];
 };
